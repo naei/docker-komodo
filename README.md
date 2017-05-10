@@ -1,6 +1,6 @@
 ## docker-komodo
 
-Run [Komodo](https://github.com/SuperNETorg/komodo) daemon in a Docker container.
+Run [Komodo](https://github.com/jl777/komodo) daemon in a Docker container.
 
 ### Quick start
 
