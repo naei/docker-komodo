@@ -14,5 +14,6 @@ ADD komodo.conf /root/.komodo/komodo.conf
 WORKDIR /root/komodo
 
 ENTRYPOINT \
-  ./src/komodod -daemon && \
+  echo "Launching komodod daemon in background >> komodod.log" && \
+  nohup ./src/komodod -daemon > komodod.log 2>&1 & \
   /bin/bash
