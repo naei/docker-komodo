@@ -1,7 +1,8 @@
 [<img src="https://user-images.githubusercontent.com/10995534/26951304-35f65c0a-4cd3-11e7-8ee0-e6f256f0344f.png" width="300" title="Komodo Platform">](https://komodoplatform.com)  
 
-Run [Komodo](https://github.com/jl777/komodo) daemon in a Docker container.  
-*This project is still in development, use it at your own risk!*
+Run [Komodo](https://github.com/jl777/komodo) daemon in a Docker container.
+
+*Note: I am not related to Komodo or SuperNET. This repository is a personnal project with few notes in order to help people to start with Komodo. This is still in development, use it at your own risk!*
 
 ### Quick start
 
@@ -38,3 +39,19 @@ Note: If the blockchain is not fully sync, the data here might be wrong
 
 ##### List balances by receiving address.
 `./src/komodo-cli listreceivedbyaddress 0 true`
+
+### What is the Komodo Platform ?
+
+> *The Komodo Platform is a cryptocurrency project that focuses on providing anonymity through zero knowledge proofs and security through a novel Delayed Proof of Work (dPoW) protocol. The Komodo Platform was forked from Zcash by the SuperNET team and it is the evolution of the BitcoinDark cryptocurrency.* ([source](https://www.cryptocompare.com/coins/guides/what-is-the-komodo-platform))
+
+### Resources
+
+##### Komodo
+   - https://komodoplatform.com/
+   - https://twitter.com/komodoplatform
+   - https://github.com/jl777/komodo
+
+##### SuperNET
+   - https://supernet.org
+   - https://github.com/SuperNETorg
+   - http://slackinvite.supernet.org
