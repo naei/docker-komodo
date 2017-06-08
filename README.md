@@ -1,8 +1,7 @@
-## docker-komodo
+[<img src="https://user-images.githubusercontent.com/10995534/26951304-35f65c0a-4cd3-11e7-8ee0-e6f256f0344f.png" width="300" title="Komodo Platform">](https://komodoplatform.com)  
 
-Run [Komodo](https://github.com/jl777/komodo) daemon in a Docker container.
-
-Note: *This project is still in development, use it at your own risk!*
+Run [Komodo](https://github.com/jl777/komodo) daemon in a Docker container.  
+*This project is still in development, use it at your own risk!*
 
 ### Quick start
 
@@ -10,3 +9,32 @@ Note: *This project is still in development, use it at your own risk!*
 2. Build `docker build -t naei/komodo .`
 3. Run `docker run -it -v ~/.kmd:/root/.komodo naei/komodo`  
    (replace `~/.kmd` by the path in your host in which you want to sync all your data)
+
+### Useful commands
+
+> *There is no transactions commands here as it has not been tested yet.*
+
+`./src/komodo-cli help`  
+`./src/komodo-cli help <command_name>`
+
+##### List the addresses of the current account ("" by default)
+`./src/komodo-cli getaddressesbyaccount ""`
+
+##### Get the private key of one of your wallet address 
+`./src/komodo-cli dumpprivkey <your_wallet_address>`
+
+##### Validate an address 
+`./src/komodo-cli validateaddress <kmd_address>`
+
+##### Import an existing account into your wallet
+`./src/komodo-cli importprivkey <your_private_key> <"optional_account_name">`
+
+##### Check the blockchain sync advancement
+If the "blocks" number from `./src/komodo-cli getinfo` is equal to the "height" number of http://kmd.explorer.supernet.org/api/blocks?limit=1 the blockchain is fully sync.
+
+##### Get the wallet info
+./src/komodo-cli getwalletinfo
+Note: If the blockchain is not fully sync, the data here might be wrong
+
+##### List balances by receiving address.
+`./src/komodo-cli listreceivedbyaddress 0 true`
