@@ -1,13 +1,13 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 RUN \
-  # install Komodo based on https://github.com/jl777/komodo documentation
   apt-get update && \
-  apt-get install -y nano build-essential dnsutils pkg-config libcurl4-gnutls-dev libc6-dev libevent-dev m4 g++-multilib autoconf libtool libncurses5-dev unzip git python zlib1g-dev wget bsdmainutils automake libboost-all-dev libssl-dev libprotobuf-dev protobuf-compiler libqt4-dev libqrencode-dev libdb++-dev ntp ntpdate && \
-  cd ~ && git clone https://github.com/jl777/komodo && \
-  cd komodo && \
-  ./zcutil/fetch-params.sh && \
-  ./zcutil/build.sh -j$(nproc)
+  apt-get install -y wget curl nano libtool && \
+  # install the latest Linux release from official Github repository
+  curl -s https://api.github.com/repos/KomodoPlatform/komodo/releases/latest | grep browser_download_url | grep komodo_linux | cut -d '"' -f 4 | wget -O komodo_linux.tar.gz -qi - && \
+  mkdir -p /root/komodo && tar -xzf ./komodo_linux.tar.gz -C /root/komodo --strip-components 1 && \
+  cd /root/komodo && \
+  ./fetch-params.sh
 
 ADD komodo.conf /root/komodo.conf.default
 
@@ -23,9 +23,9 @@ CMD \
   [ $(ls ~/.komodo | wc -l) -ne 0 ] && \
   echo "> ~/.komodo not empty: using existing data" || \
   echo "> ~/.komodo is empty: using default conf" && \
-  mv /root/komodo.conf.default ~/.komodo/komodo.conf && \
+  mv ~/komodo.conf.default ~/.komodo/komodo.conf && \
   # run komodo daemon
   echo "> Running Komodo daemon in background >> komodod.log" && \
-  nohup ./src/komodod -daemon > komodod.log 2>&1 & \
+  nohup ./komodod -daemon > komodod.log 2>&1 & \
   # bash shell
   /bin/bash
